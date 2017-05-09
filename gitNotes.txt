@@ -1,0 +1,56 @@
+一、添加文件
+1、 git add (filename)
+2、 git commit -m "any word used to explain the changing"  可以多次add 然后一起commit
+3、git status
+4、git diff (filename) 查看库状态，和文件具体修改情况
+
+二、更改版本
+1、git log 查看所有版本
+2、git log --pretty=oneline --abbrev-commit  简短形式查看所有版本
+3、git reset --hard HEAD^/commit编号   HEAD表示当前版本，^表示前一个版本，^^表示前连个，~100可以表示前一百个
+4、git reflog 查看历史命令可以回到未来，用来确定要未来的版本commit编号
+
+三、改动删除(stupid boss)
+1、git有工作区，暂存区，版本库。工作区是用户正在操作的，add之后，修改就被添加到暂存区，commit就是把暂存区的修改添加到分支，并且清空暂存区
+2、git checkout -- (filename) 撤回工作区的修改
+3、git reset HEAD filename 撤回暂存区的修改，需要继续使用撤回工作区的修改命令，来撤销
+4、如果已经commit了，则需要使用版本回退
+
+四、删除文件
+1、git rm filename 删除文件，之后需要commit
+2、如果是在文件管理器中误删了文件，可以使用checkout命令，恢复文件，因为版本库中还有这个文件
+
+五、远程库
+1、git remote add origin git@github.com:qxcs/dbname.git 关联
+2、git push origin （branchName） 提交
+3、git clone git@github com:qxcs/dbname.git  qxcs是用户名，dbname是库名字
+4、git checkout -b branch-name origin/branch-name 在本地创建和远程分支对应的分支
+5、git branch --set-upstream branch-name origin/branch-name  关联远程分支和本地分支
+6、git pull 从远程抓取分支内容
+
+六、分支管理
+1、git checkout -b (branchName) 创建一个新分支，并且切换到新分支,相当于下面两条指令一起
+2、git branch (branchName) 创建一个新分支
+3、git checkout (branchName) 切换分支
+4、git branch 查看分支情况
+5、git merge (BranchName) 合并分支
+6、git branch -d (branchName) 删除分支
+7、git merge --no-ff -m "any word" (branchName)  不使用fast forward合并，可以留下合并历史
+
+七、bug管理
+1、git stash  保存工作区
+2、git stash pop  回复工作区 在保存之后可以切换到其他分支进行一些修复工作，之后回到当前分支并恢复工作区，继续工作
+
+八、标签管理  标签就是给commit取一个名字，类似域名是给ip地址取名字
+1、git tag 查看标签信息
+2、git tag (tagName) 给最新的commit打标签
+3、git tag (tagName) (commitID) 给过去的commit打标签
+4、git show (tagName) 查看某个标签的具体信息
+5、git tag -a (tagName) -m "any word" -a是指定标签名，-m是说明文字
+6、git tag -d (tagName) 删除标签
+7、git push origin (tagName) 推送标签到远程
+8、git push origin --tags 推送所有标签到远程
+9、git push origin :refs/tags/<tagname> 删除远程标签，不过使用时需要先删除本地标签
+
+九、配置别名
+1、git config --global alias.myName formalName
