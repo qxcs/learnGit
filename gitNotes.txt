@@ -22,7 +22,7 @@
 
 五、远程库
 1、git remote add origin git@github.com:qxcs/dbname.git 关联
-2、git push origin （branchName） 提交
+2、git push origin （branchName） 提交 如果是第一次，使用git push -u origin master
 3、git clone git@github com:qxcs/dbname.git  qxcs是用户名，dbname是库名字
 4、git checkout -b branch-name origin/branch-name 在本地创建和远程分支对应的分支
 5、git branch --set-upstream branch-name origin/branch-name  关联远程分支和本地分支
